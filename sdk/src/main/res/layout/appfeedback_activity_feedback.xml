@@ -182,7 +182,6 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginBottom="10dp"
-                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-"
                             android:hint="@string/appfeedback_feedback_id"
                             android:inputType="text"
                             android:lines="1"

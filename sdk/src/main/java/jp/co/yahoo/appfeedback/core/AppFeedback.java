@@ -23,6 +23,8 @@ public class AppFeedback {
     private static boolean canUseMediaProjectionAPI = true;
     private static Intent mediaProjectionData = null;
 
+    private static String userId = null;
+
     /**
      * AppFeedbackSDKを初期化するための関数<br>
      * eventIdを指定しないので、internalで起動
@@ -41,6 +43,18 @@ public class AppFeedback {
      * @param slackChannel 投稿先の Channel ID
      */
     public static void start(Activity activity, String token, String slackChannel) {
+        start(activity, token, slackChannel, "");
+    }
+
+    /**
+     * AppFeedbackSDKを初期化するための関数<br>
+     * アプリが最初に立ち上げるActivity内で呼び出す<br>
+     * @param activity SDKを初期化するActivity
+     * @param token Slack Token
+     * @param slackChannel 投稿先の Channel ID
+     * @param userId NPのUser ID
+     */
+    public static void start(Activity activity, String token, String slackChannel, String userId) {
 
         if(appFeedbackContext != null) {
             // アプリケーション起動時以外のタイミングでは呼び出されてもスルーする
@@ -54,6 +68,7 @@ public class AppFeedback {
 
         AppFeedback.token = token;
         AppFeedback.slackChannel = slackChannel;
+        AppFeedback.userId = userId;
 
         appFeedbackContext = new AppFeedbackContext(activity);
 
@@ -83,6 +98,14 @@ public class AppFeedback {
     static void setMediaProjection(Intent mediaProjectionData, boolean canUseMediaProjectionAPI) {
         AppFeedback.mediaProjectionData = mediaProjectionData;
         AppFeedback.canUseMediaProjectionAPI = canUseMediaProjectionAPI;
+    }
+
+    /**
+     * UserIdを返す
+     * @return userId
+     */
+    static String getUserId() {
+        return AppFeedback.userId;
     }
 
     /**
@@ -136,5 +159,6 @@ public class AppFeedback {
         token = null;
         slackChannel = null;
         appFeedbackContext = null;
+        userId = null;
     }
 }

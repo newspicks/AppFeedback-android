@@ -20,14 +20,16 @@ public class PostSlack extends API {
     private final String channel;
     private final String token;
     private final FeedbackContent content;
+    private final String userId;
 
-    public PostSlack(String apiUrl, Context context, String channel, String token, FeedbackContent content) {
+    public PostSlack(String apiUrl, Context context, String channel, String token, String userId, FeedbackContent content) {
         super(context);
 
         this.apiUrl = apiUrl;
         this.channel = channel;
         this.token= token;
         this.content = content;
+        this.userId = userId;
     }
 
     @Override
@@ -81,6 +83,10 @@ public class PostSlack extends API {
         comment.append("\n");
 
         comment.append("```");
+
+        comment.append("[UserId]\n");
+        comment.append(this.userId);
+        comment.append("\n\n");
 
         comment.append("[Message]\n");
         comment.append(this.content.message);

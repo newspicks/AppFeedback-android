@@ -9,7 +9,7 @@ import jp.co.yahoo.appfeedback.core.AppFeedback;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String SLACK_CHANNEL = "CEJ4RQF6D";
+    private static final String SLACK_CHANNEL = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Externalで起動するパターン
         AppFeedback.start(this,
-                           BuildConfig.APP_FEEDBACK_SDK_SLACK_TOKEN,
-                           SLACK_CHANNEL);
+                           "",
+                           SLACK_CHANNEL,
+                "1234567890");
 
         findViewById(R.id.main_second).setOnClickListener(new View.OnClickListener() {
             @Override

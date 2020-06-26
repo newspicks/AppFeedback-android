@@ -323,6 +323,7 @@ public class FeedbackActivity extends Activity {
             new PostSlack(AppFeedback.getSlackApiUrl(),
                     this, AppFeedback.getSlackChannel(),
                     AppFeedback.getToken(),
+                    AppFeedback.getUserId(),
                     content).executeAsync(new SlackAPIHandler(this, this.sendingLabel));
 
         } catch (Exception e) {
